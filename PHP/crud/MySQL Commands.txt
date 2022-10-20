@@ -1,0 +1,111 @@
+C:\Apache24\htdocs>"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.29 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| vits               |
+| world              |
++--------------------+
+7 rows in set (0.17 sec)
+
+mysql> create schema ecommerce;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ecommerce          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| vits               |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use ecommerce;
+Database changed
+mysql> create table products (id int primary key, product_name varchar(255) not null);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ecommerce |
++---------------------+
+| products            |
++---------------------+
+1 row in set (0.05 sec)
+
+mysql> quit
+Bye
+
+C:\Apache24\htdocs>"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.29 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use ecommerce;
+Database changed
+mysql> insert into products values (1, 'OnePlus 9 Pro'), (2, 'OnePlus 9T');
+Query OK, 2 rows affected (0.04 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> alter table products modify column id int auto_increment;
+Query OK, 2 rows affected (0.12 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from products;
++----+-----------------+---------+
+| id | product_name    | deleted |
++----+-----------------+---------+
+|  1 | OnePlus 9       |       0 |
+|  2 | OnePlus 9 Pro   |       0 |
+|  3 | OnePlus Nord CE |       0 |
+|  4 | Xiaomi Mi A3    |       0 |
++----+-----------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from products;
++----+-----------------+---------+
+| id | product_name    | deleted |
++----+-----------------+---------+
+|  1 | OnePlus 9       |       0 |
+|  2 | OnePlus 9 Pro   |       0 |
+|  3 | OnePlus Nord CE |       0 |
+|  4 | Xiaomi Mi A3    |       1 |
++----+-----------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> update products set deleted = 0 where id != 4;
+Query OK, 3 rows affected (0.03 sec)
+Rows matched: 3  Changed: 3  Warnings: 0

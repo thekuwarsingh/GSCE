@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            JavaScript Function () => Template String
+        </title>
+    </head>
+    <body>
+        <script>
+            
+            function hello()
+            {   
+                //ECMA Script () => ES(6)
+                let studentNameIs = "Nikita";   //camelCase
+                let StudentAgeIs = prompt("Age : ");          //PascalCase
+                let student_add_is = 'Sagar';   //snake_case
+
+                //old way(JS)
+                //let concat = studentNameIs + ' ' + 'is ' + StudentAgeIs + ' years old.'
+                
+                //ES(6)
+                let concat = `${studentNameIs} is ${StudentAgeIs} years old.`
+                alert(concat)
+            }
+            hello();
+        </script>
+    </body>
+</html>
