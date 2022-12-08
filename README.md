@@ -1,1 +1,1 @@
-# GSCE
+# GSCE Training Program - {React + Php}
